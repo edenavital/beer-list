@@ -7,3 +7,6 @@ export const API_ENDPOINTS = {
 };
 
 export const API_LIMIT = 10;
+
+export const ERROR_MESSAGE =
+  "Sorry, the service is not available right now, please try again later";

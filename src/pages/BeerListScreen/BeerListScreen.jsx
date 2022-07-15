@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 import * as Styled from "./BeerListScreen.styles";
 import { httpClient } from "../../api";
-import { API_LIMIT } from "../../utils";
+import { API_LIMIT, ERROR_MESSAGE } from "../../utils";
 import { LoadMore } from "../../components/LoadMore";
 import { BeerList } from "../../components/BeerList";
+import { Typography } from "../../components/Typography";
 
 export const BeerListScreen = () => {
   const [beersList, setBeersList] = useState(null);
   const [offset, setOffest] = useState(1);
   const [isFetching, setIsFetching] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const renderErrorMessage = () => (
+    <Styled.ErrorWrapper>
+      <Typography fontSize={18}>{errorMessage}</Typography>
+    </Styled.ErrorWrapper>
+  );
 
   const loadMoreContent = () => {
     setOffest(offset + 1);
@@ -29,7 +37,7 @@ export const BeerListScreen = () => {
 
         setBeersList(updatedBeersList);
       } catch (err) {
-        console.error("ERR", err);
+        setErrorMessage(err?.message ?? ERROR_MESSAGE);
       } finally {
         setIsFetching(false);
       }
@@ -41,8 +49,12 @@ export const BeerListScreen = () => {
   return (
     <Styled.BeerListScreenWrapper>
       <Styled.BeerListTitle fontSize={22}>Beers</Styled.BeerListTitle>
-      {beersList && <BeerList beersList={beersList} />}
-      {<LoadMore loadMoreContent={loadMoreContent} isFetching={isFetching} />}
+      {errorMessage
+        ? renderErrorMessage()
+        : beersList && <BeerList beersList={beersList} />}
+      {!errorMessage && (
+        <LoadMore loadMoreContent={loadMoreContent} isFetching={isFetching} />
+      )}
     </Styled.BeerListScreenWrapper>
   );
 };

@@ -20,3 +20,8 @@ export const BeerListTitle = styled(Typography)((props) => {
     },
   };
 });
+
+export const ErrorWrapper = styled("div")(({ theme }) => ({
+  ...theme.mixins.genericFlex,
+  margin: "auto",
+}));
