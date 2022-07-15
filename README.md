@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Welcome to Beer List app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Hello there,**
 
-## Available Scripts
+Since you asked for scalable code, I added some infrastructure for enlarging the task.
 
-In the project directory, you can run:
+<ins>A few points to mention:</ins>
 
-### `npm start`
+1. Implementation for Routes - incase we would like to add multiple pages - for example clicking on a card would route us to a more informative page of it
+2. Theme - currently taking the palette from "lightTheme", it's very easy to add more themes such as darkTheme - I only extract the palette from there.
+3. There are no attached colors in the mock file, so I tried to extract the colors using chrome extension (ColorZilla)
+4. Everything is wrapped by ThemeProvider - using styled-components for mixins & theme
+5. The structure of the code is divided into modules for scalability
+6. Each folder contains index.js for easier importing paths
+7. If I use a component from a 3rd package (Material UI in our case) - I usually wrap it and reuse it across all the app (It's not necessary but it makes the code very organized - global refactors in single places)
+8. I could add more technologies, however it wasn't necessary for the task:
+   - Localization - if the app is delivered to different countries.
+   - Redux - global manager (we only have a single page here, we barely drill props here)
+   - Catching - store the fetched data for the next refresh (localStorage, Redis if we have a server ...)
+   - Tests, Eslint and prettier configurations (I'm the only one who works on the project)
+   - Custom hook for fetching data wasn't necessary, we only fetch once
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Feel free to contact at any time :)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to run
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+1. git clone https://github.com/edenavital/beer-list.git
+2. cd beer-list
+3. npm i && npm start
+```
